@@ -23,6 +23,7 @@ typedef enum PetState {
 @interface Pet : NSObject
     //Tells whether pet is grumpy or not
     @property (readonly, nonatomic) PetState state;
+
     @property (nonatomic) float restfulness;
     @property (weak) id<PetDelegate> delegate;
     //@property (readonly, nonatomic) BOOL isGrumpy;

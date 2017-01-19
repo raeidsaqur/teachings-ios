@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		356D3D991E3125E30094B61E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602CAE521984363800C9FE49 /* Main.storyboard */; };
 		356D3D9A1E3125EB0094B61E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA79DD621C99C01C0098CD0D /* Default-568h@2x.png */; };
+		356D3D9D1E3147860094B61E /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 356D3D9C1E3147860094B61E /* UIView+Extensions.m */; };
 		602CAE411984363700C9FE49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE401984363700C9FE49 /* Foundation.framework */; };
 		602CAE431984363700C9FE49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE421984363700C9FE49 /* CoreGraphics.framework */; };
 		602CAE451984363700C9FE49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE441984363700C9FE49 /* UIKit.framework */; };
@@ -19,7 +20,6 @@
 		602CAE601984363900C9FE49 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE5F1984363900C9FE49 /* XCTest.framework */; };
 		602CAE611984363900C9FE49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE401984363700C9FE49 /* Foundation.framework */; };
 		602CAE621984363900C9FE49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602CAE441984363700C9FE49 /* UIKit.framework */; };
-		602CAE6A1984363900C9FE49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 602CAE681984363900C9FE49 /* InfoPlist.strings */; };
 		602CAE6C1984363A00C9FE49 /* PhonagotchiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 602CAE6B1984363A00C9FE49 /* PhonagotchiTests.m */; };
 		607C5D341985A13300501387 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 607C5D311985A13300501387 /* default.png */; };
 		607C5D351985A13300501387 /* sleeping.png in Resources */ = {isa = PBXBuildFile; fileRef = 607C5D321985A13300501387 /* sleeping.png */; };
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		356D3D9B1E3147860094B61E /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
+		356D3D9C1E3147860094B61E /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		602CAE3D1984363700C9FE49 /* Phonagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phonagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		602CAE401984363700C9FE49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		602CAE421984363700C9FE49 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,7 +59,6 @@
 		602CAE5E1984363900C9FE49 /* PhonagotchiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhonagotchiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		602CAE5F1984363900C9FE49 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		602CAE671984363900C9FE49 /* PhonagotchiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhonagotchiTests-Info.plist"; sourceTree = "<group>"; };
-		602CAE691984363900C9FE49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		602CAE6B1984363A00C9FE49 /* PhonagotchiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhonagotchiTests.m; sourceTree = "<group>"; };
 		607C5D311985A13300501387 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		607C5D321985A13300501387 /* sleeping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleeping.png; sourceTree = "<group>"; };
@@ -138,6 +139,8 @@
 				602CAE521984363800C9FE49 /* Main.storyboard */,
 				602CAE551984363800C9FE49 /* LPGViewController.h */,
 				602CAE561984363800C9FE49 /* LPGViewController.m */,
+				356D3D9B1E3147860094B61E /* UIView+Extensions.h */,
+				356D3D9C1E3147860094B61E /* UIView+Extensions.m */,
 				602CAE581984363900C9FE49 /* Images.xcassets */,
 				602CAE471984363700C9FE49 /* Supporting Files */,
 			);
@@ -169,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				602CAE671984363900C9FE49 /* PhonagotchiTests-Info.plist */,
-				602CAE681984363900C9FE49 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,7 +268,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				602CAE6A1984363900C9FE49 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +280,7 @@
 			files = (
 				602CAE571984363800C9FE49 /* LPGViewController.m in Sources */,
 				C9FFAB031DD5023400614BAA /* Pet.m in Sources */,
+				356D3D9D1E3147860094B61E /* UIView+Extensions.m in Sources */,
 				602CAE511984363800C9FE49 /* LPGAppDelegate.m in Sources */,
 				602CAE4D1984363700C9FE49 /* main.m in Sources */,
 			);
@@ -317,14 +319,6 @@
 				602CAE531984363800C9FE49 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		602CAE681984363900C9FE49 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				602CAE691984363900C9FE49 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

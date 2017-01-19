@@ -7,6 +7,7 @@
 //
 
 #import "LPGViewController.h"
+#import "UIView+Extensions.h"
 
 @interface LPGViewController ()
 
@@ -69,21 +70,26 @@
     self.pet.delegate = self;
 }
 
-#pragma mark - Model Modification Methods
+#pragma mark - PetDelegate Methods
+
 -(void) onPetStateChanged:(PetState)petState {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    //NSLog(@"%s", __PRETTY_FUNCTION__);
     
     switch (petState) {
         case PetState_Happy:
             self.petImageView.image = [UIImage imageNamed:@"default"];
+            [UIView shakeItAnimation:self.petImageView];
             self.labelState.text = @"HAPPY";
+            //self.petImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
             break;
         case PetState_Sleeping:
             self.petImageView.image = [UIImage imageNamed:@"sleeping"];
+            //self.petImageView.transform = CGAffineTransformIdentity;
             self.labelState.text = @"SLEEPY";
             break;
         case PetState_Grumpy:
             self.petImageView.image = [UIImage imageNamed:@"grumpy"];
+            //self.petImageView.transform = CGAffineTransformIdentity;
             self.labelState.text = @"GRUMPY";
             break;
         default:
@@ -95,6 +101,7 @@
 #pragma mark - Gesture Recognizer methods
 
 - (IBAction)onPanned:(UIPanGestureRecognizer*)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     [self.pet petWithVelocity:[sender velocityInView:self.view]];
 }
 
@@ -185,16 +192,18 @@
             else
             {
                 //Falls off the screen
+                
                 [UIView animateWithDuration:1
-                                       delay:0
-                                     options:UIViewAnimationOptionCurveEaseIn
-                                  animations:^{
+                                      delay:0
+                                    options:UIViewAnimationOptionCurveEaseIn
+                                 animations:^{
                                      self.extraAppleImageView.center = CGPointMake(self.extraAppleImageView.center.x, self.view.bounds.size.height + self.extraAppleImageView.bounds.size.height);
                                  }
                                  completion:^(BOOL finished) {
                                      [self.extraAppleImageView removeFromSuperview];
                                      self.extraAppleImageView = nil;
                                  }];
+                
             }
             break;
         default:

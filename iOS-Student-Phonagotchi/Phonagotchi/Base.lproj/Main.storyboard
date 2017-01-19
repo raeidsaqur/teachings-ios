@@ -65,7 +65,7 @@
                 </panGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="AVj-pq-4pT">
                     <connections>
-                        <action selector="onLongTouchChanged:" destination="vXZ-lx-hvc" id="pKF-aO-G6m"/>
+                        <action selector="onLongTouchChanged:" destination="vXZ-lx-hvc" id="mDC-M5-yIh"/>
                     </connections>
                 </pongPressGestureRecognizer>
                 <pinchGestureRecognizer id="tZR-y7-H9J">

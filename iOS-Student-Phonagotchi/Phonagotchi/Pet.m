@@ -15,7 +15,7 @@
 
 @implementation Pet
 
-    float const magnitudeMax = 10000.0;
+    float const magnitudeMax = 1000.0;
     float const awakeTime = 5.0;
 
     -(id) init {
@@ -35,34 +35,41 @@
         return self;
     }
 
+#pragma mark - Property Setters
+
+
     -(void) setState:(PetState)state {
         //NSLog(@"%s", __PRETTY_FUNCTION__);
         _state = state;
         
-        if ([self.delegate respondsToSelector:@selector(onPetStateChanged:)])
-        {
+        if ([self.delegate respondsToSelector:@selector(onPetStateChanged:)]) {
             [self.delegate onPetStateChanged:self.state];
         }
         
-        if (state != PetState_Sleeping)
-        {
+        if (state != PetState_Sleeping) {
             self.timeRemaining = awakeTime;
         }
     }
 
+#pragma mark - Actions
+
     -(void) petWithVelocity:(CGPoint) velocity {
         NSLog(@"%s", __PRETTY_FUNCTION__);
         //Get magnitude
-        float magnitude = sqrtf(powf(velocity.x, 2) + powf(velocity.x, 2));
-        
-        if (magnitude > magnitudeMax)
-        {
+        float magnitude = sqrtf(powf(velocity.x, 2) + powf(velocity.y, 2));
+        NSLog(@"Petting magnitude = %f", magnitude);
+        if (magnitude > magnitudeMax) {
             self.state = PetState_Grumpy;
+            
+        }
+        
+        if (self.state != PetState_Grumpy) {
+            self.state = PetState_Happy;
         }
     }
 
     -(void) feed {
-        
+        NSLog(@"%s", __PRETTY_FUNCTION__);
         self.state = PetState_Happy;
     }
 @end
