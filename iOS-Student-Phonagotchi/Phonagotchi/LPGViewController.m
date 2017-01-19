@@ -9,12 +9,17 @@
 #import "LPGViewController.h"
 
 @interface LPGViewController ()
+
+    //Model Object
+    @property (strong, nonatomic) Pet* pet;
+
     @property (weak, nonatomic) IBOutlet UIImageView *appleImageView;
     @property (nonatomic) UIImageView *petImageView;
+
     @property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longTouchGestureRecognizer;
     @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGestureRecognizer;
     @property (strong, nonatomic) IBOutlet UIPinchGestureRecognizer *pinchGestureRecognizer;
-    @property (strong, nonatomic) Pet* pet;
+
 
     @property (strong, nonatomic) IBOutlet UILabel *labelState;
 
@@ -23,8 +28,11 @@
 
 @implementation LPGViewController
 
+#pragma mark - Life Cycle Methods
 - (void)viewDidLoad
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super viewDidLoad];
 	
     self.view.backgroundColor = [UIColor colorWithRed:(252.0/255.0) green:(240.0/255.0) blue:(228.0/255.0) alpha:1.0];
@@ -61,28 +69,10 @@
     self.pet.delegate = self;
 }
 
-- (IBAction)onPanned:(UIPanGestureRecognizer*)sender {
-    [self.pet petWithVelocity:[sender velocityInView:self.view]];
-}
-
-- (IBAction)onPinched:(UIPinchGestureRecognizer*)sender
-{
-//    switch (sender.state) {
-//        case UIGestureRecognizerStateBegan:
-//            if (appleImageView) {
-//                <#statements#>
-//            }
-//            break;
-//        case UIGestureRecognizerStateBegan:
-//            NSLog(@"");
-//            break;
-//        default:
-//            break;
-//    }
-}
-
--(void) onPetStateChanged:(PetState)petState
-{
+#pragma mark - Model Modification Methods
+-(void) onPetStateChanged:(PetState)petState {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     switch (petState) {
         case PetState_Happy:
             self.petImageView.image = [UIImage imageNamed:@"default"];
@@ -101,7 +91,68 @@
     }
 }
 
+
+#pragma mark - Gesture Recognizer methods
+
+- (IBAction)onPanned:(UIPanGestureRecognizer*)sender {
+    [self.pet petWithVelocity:[sender velocityInView:self.view]];
+}
+
+- (IBAction)onPinched:(UIPinchGestureRecognizer*)sender {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    CGPoint point = [sender locationOfTouch:0 inView:self.view];
+    
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            //Make new apple
+            self.extraAppleImageView = [UIImageView new];
+            self.extraAppleImageView.frame = self.appleImageView.frame;
+            self.extraAppleImageView.center = point;
+            self.extraAppleImageView.image = [UIImage imageNamed:@"apple"];
+            
+            [self.view addSubview:self.extraAppleImageView];
+            break;
+        case UIGestureRecognizerStateChanged:
+            //Move the apple
+            self.extraAppleImageView.center = point;
+            
+            break;
+        case UIGestureRecognizerStateEnded:
+            //Check if it is over the pet
+            if (CGRectContainsPoint(self.petImageView.frame, point))
+            {
+                //Feed the pet
+                [self.pet feed];
+                
+                //Destroy apple
+                [self.extraAppleImageView removeFromSuperview];
+                self.extraAppleImageView = nil;
+            }
+            else
+            {
+                //Falls off the screen
+                [UIView animateWithDuration:1
+                                      delay:0
+                                    options:UIViewAnimationOptionCurveEaseIn
+                                 animations:^{
+                                     self.extraAppleImageView.center = CGPointMake(self.extraAppleImageView.center.x, self.view.bounds.size.height + self.extraAppleImageView.bounds.size.height);
+                                 }
+                                 completion:^(BOOL finished) {
+                                     [self.extraAppleImageView removeFromSuperview];
+                                     self.extraAppleImageView = nil;
+                                 }];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 - (IBAction)onLongTouchChanged:(UILongPressGestureRecognizer*)sender {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     //Get coordinate
     CGPoint point = [sender locationOfTouch:0 inView:self.view];
     
@@ -150,5 +201,6 @@
             break;
     }
 }
+
 
 @end

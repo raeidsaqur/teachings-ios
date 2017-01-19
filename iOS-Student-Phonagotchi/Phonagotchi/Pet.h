@@ -8,24 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum PetState
-{
+typedef enum PetState {
     PetState_Happy,
     PetState_Grumpy,
     PetState_Sleeping
 } PetState;
 
 @protocol PetDelegate <NSObject>
-    -(void) onPetStateChanged:(PetState) petState;
+
+-(void) onPetStateChanged:(PetState) petState;
+
 @end
 
 @interface Pet : NSObject
+    //Tells whether pet is grumpy or not
     @property (readonly, nonatomic) PetState state;
     @property (nonatomic) float restfulness;
-
     @property (weak) id<PetDelegate> delegate;
-
-//    @property (readonly, nonatomic) BOOL isGrumpy;
+    //@property (readonly, nonatomic) BOOL isGrumpy;
 
     -(void) petWithVelocity:(CGPoint) velocity;
     -(void) feed;

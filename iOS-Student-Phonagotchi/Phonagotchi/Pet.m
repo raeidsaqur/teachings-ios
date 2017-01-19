@@ -14,20 +14,19 @@
 @end
 
 @implementation Pet
+
     float const magnitudeMax = 10000.0;
     float const awakeTime = 5.0;
 
-    -(id) init
-    {
+    -(id) init {
         self = [super init];
-        
-        if (self)
-        {
-            self.sleepTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (self) {
+            self.sleepTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                              repeats:YES
+                                                                block:^(NSTimer * _Nonnull timer) {
                 _timeRemaining--;
                 
-                if (_timeRemaining <= 0)
-                {
+                if (_timeRemaining <= 0) {
                     self.state = PetState_Sleeping;
                 }
             }];
@@ -36,8 +35,8 @@
         return self;
     }
 
-    -(void) setState:(PetState)state
-    {
+    -(void) setState:(PetState)state {
+        //NSLog(@"%s", __PRETTY_FUNCTION__);
         _state = state;
         
         if ([self.delegate respondsToSelector:@selector(onPetStateChanged:)])
@@ -51,8 +50,8 @@
         }
     }
 
-    -(void) petWithVelocity:(CGPoint) velocity
-    {
+    -(void) petWithVelocity:(CGPoint) velocity {
+        NSLog(@"%s", __PRETTY_FUNCTION__);
         //Get magnitude
         float magnitude = sqrtf(powf(velocity.x, 2) + powf(velocity.x, 2));
         
@@ -62,8 +61,8 @@
         }
     }
 
-    -(void) feed
-    {
+    -(void) feed {
+        
         self.state = PetState_Happy;
     }
 @end

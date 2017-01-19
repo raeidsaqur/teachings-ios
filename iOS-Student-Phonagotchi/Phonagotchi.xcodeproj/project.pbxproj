@@ -131,6 +131,8 @@
 				607C5D311985A13300501387 /* default.png */,
 				607C5D321985A13300501387 /* sleeping.png */,
 				607C5D331985A13300501387 /* grumpy.png */,
+				C9FFAB011DD5023400614BAA /* Pet.h */,
+				C9FFAB021DD5023400614BAA /* Pet.m */,
 				602CAE4F1984363800C9FE49 /* LPGAppDelegate.h */,
 				602CAE501984363800C9FE49 /* LPGAppDelegate.m */,
 				602CAE521984363800C9FE49 /* Main.storyboard */,
@@ -138,8 +140,6 @@
 				602CAE561984363800C9FE49 /* LPGViewController.m */,
 				602CAE581984363900C9FE49 /* Images.xcassets */,
 				602CAE471984363700C9FE49 /* Supporting Files */,
-				C9FFAB011DD5023400614BAA /* Pet.h */,
-				C9FFAB021DD5023400614BAA /* Pet.m */,
 			);
 			path = Phonagotchi;
 			sourceTree = "<group>";

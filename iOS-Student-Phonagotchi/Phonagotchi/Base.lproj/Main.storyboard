@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,6 +29,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple.png" translatesAutoresizingMaskIntoConstraints="NO" id="OuG-b3-03M">
                                 <rect key="frame" x="16" y="438" width="113" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6A5-QM-ofo">
                                 <rect key="frame" x="262.5" y="638" width="96.5" height="29"/>
@@ -45,6 +46,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="j36-25-UPz" appends="YES" id="ghY-Xc-4Mf"/>
+                            <outletCollection property="gestureRecognizers" destination="tZR-y7-H9J" appends="YES" id="5SM-DC-w3S"/>
                         </connections>
                     </view>
                     <connections>
@@ -52,7 +54,7 @@
                         <outlet property="labelState" destination="6A5-QM-ofo" id="san-Um-yeW"/>
                         <outlet property="longTouchGestureRecognizer" destination="AVj-pq-4pT" id="bqU-Yp-9je"/>
                         <outlet property="panGestureRecognizer" destination="j36-25-UPz" id="mq2-A6-5N8"/>
-                        <outlet property="pinchGestureRecognizer" destination="XEb-dR-za8" id="BzN-wY-7Af"/>
+                        <outlet property="pinchGestureRecognizer" destination="tZR-y7-H9J" id="pqI-XX-aDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -61,16 +63,16 @@
                         <action selector="onPanned:" destination="vXZ-lx-hvc" id="4mk-2X-bWk"/>
                     </connections>
                 </panGestureRecognizer>
-                <pinchGestureRecognizer id="XEb-dR-za8">
-                    <connections>
-                        <action selector="onPinched:" destination="vXZ-lx-hvc" id="K3u-kH-V1w"/>
-                    </connections>
-                </pinchGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="AVj-pq-4pT">
                     <connections>
                         <action selector="onLongTouchChanged:" destination="vXZ-lx-hvc" id="pKF-aO-G6m"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <pinchGestureRecognizer id="tZR-y7-H9J">
+                    <connections>
+                        <action selector="onPinched:" destination="vXZ-lx-hvc" id="nGL-Lb-7sQ"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="34.5" y="36.5"/>
         </scene>
