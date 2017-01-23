@@ -57,6 +57,8 @@
         NSLog(@"%s", __PRETTY_FUNCTION__);
         //Get magnitude
         float magnitude = sqrtf(powf(velocity.x, 2) + powf(velocity.y, 2));
+        
+        
         NSLog(@"Petting magnitude = %f", magnitude);
         if (magnitude > magnitudeMax) {
             self.state = PetState_Grumpy;

@@ -40,7 +40,6 @@
     
     self.petImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.petImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     self.petImageView.image = [UIImage imageNamed:@"default"];
     
     [self.view addSubview:self.petImageView];
